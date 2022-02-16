@@ -40,3 +40,22 @@ const hecxaDecColorChange = () => {
   const blue = Math.floor(Math.random() * 255);
   return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
 };
+
+/* 
+counter up project implementation
+*/
+
+let counter = document.querySelectorAll(".timer");
+let newArrayCounter = Array.from(counter);
+newArrayCounter.map((item) => {
+  let count = 0;
+  const counterUp = () => {
+    item.innerHTML = count++;
+    if (count > item.dataset.number) {
+      clearInterval(intervalTimer);
+    }
+  };
+  const intervalTimer = setInterval(() => {
+    counterUp();
+  }, item.dataset.delay);
+});
